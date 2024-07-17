@@ -1,0 +1,25 @@
+version: "3"
+
+silent: true
+
+vars:
+  PREFIX:
+    sh: pwd
+  S3_BUCKET: "netcco-r2_cloudflare:n2x-assets"
+
+tasks:
+  publish:
+    desc: Publish assets to n2x S3 object storage.
+    cmds:
+      - |-
+        rclone --progress --s3-acl "public-read" --copy-links copy \
+          '{{.PREFIX}}/images/' '{{.S3_BUCKET}}/images/'
+      - |-
+        rclone --progress --s3-acl "public-read" --copy-links copy \
+          '{{.PREFIX}}/videos/' '{{.S3_BUCKET}}/videos/'
+
+  clean:
+    desc: Clean everything.
+    cmds:
+      - echo 'Cleaning local user config...'
+      - rm -f $HOME/.gnupg/S.gpg-agent*
