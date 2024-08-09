@@ -33,7 +33,8 @@
                 "redhat.vscode-yaml",
                 "EditorConfig.EditorConfig",
                 "mitchdenny.ecdc",
-                "timonwong.shellcheck"
+                "timonwong.shellcheck",
+                "SimonSiefke.svg-preview"
             ]
         }
     },
